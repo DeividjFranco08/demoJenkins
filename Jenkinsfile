@@ -28,8 +28,6 @@ pipeline {
                 sh 'kubeclt apply -f ingress.yaml'
             }
         } 
-
-    }
 }
 
 
