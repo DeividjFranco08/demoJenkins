@@ -5,9 +5,6 @@ pipeline {
     }
     stages {
         stage ('Build') {
-            when {
-                branch 'main' 
-            }
             steps {
                 sh 'mvn clean install'
             }
