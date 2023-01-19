@@ -15,18 +15,14 @@ pipeline {
             }
         }
         stage('Test-sonar'){
-        when {
-                branch 'main'
-            }
+      
             steps {
                 sh 'make check'
                 junit 'reports/**/*.xml' 
             }
         }
        stage('Deploy') {
-        when {
-                branch 'main' 
-            }
+
             steps {
                 sh 'echo publish'
                 sh 'kubeclt apply -f ingress.yaml'
