@@ -4,15 +4,15 @@ pipeline {
         maven 'm3' 
     }
     stages {
-        stage ('Initialize') {
+        stage ('Build') {
             steps {
-                echo 'This is a minimal pipeline.'
+                sh 'mvn clean install'
             }
         }
 
-        stage ('Build') {
+        stage ('Docker') {
             steps {
-                echo 'This is a minimal pipeline.'
+                sh 'docker ps'
             }
         }
     }
