@@ -12,7 +12,6 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-
         stage ('Docker') {
             steps {
                 sh 'docker ps'
@@ -27,6 +26,16 @@ pipeline {
                 junit 'reports/**/*.xml' 
             }
         }
+       stage('Deploy') {
+        when {
+                branch 'main' 
+            }
+            steps {
+                sh 'echo publish'
+                sh 'kubeclt apply -f ingress.yaml'
+            }
+        } 
+
     }
 }
 
