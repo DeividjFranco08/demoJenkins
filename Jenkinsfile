@@ -5,6 +5,9 @@ pipeline {
     }
     stages {
         stage ('Build') {
+            when {
+                branch 'main' 
+            }
             steps {
                 sh 'mvn clean install'
             }
@@ -15,6 +18,15 @@ pipeline {
                 sh 'docker ps'
             }
         }
+        stage('Test-sonar'){
+        when {
+                branch 'main'
+            }
+            steps {
+                sh 'make check'
+                junit 'reports/**/*.xml' 
+            }
+        }
     }
 }
 
