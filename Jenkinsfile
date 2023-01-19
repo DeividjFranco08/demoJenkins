@@ -27,7 +27,8 @@ pipeline {
                 sh 'echo publish'
                 sh 'kubeclt apply -f ingress.yaml'
             }
-        } 
+        }
+    }
 }
 
 
