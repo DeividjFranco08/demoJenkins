@@ -14,20 +14,6 @@ pipeline {
                 sh 'docker ps'
             }
         }
-        stage('Test-sonar'){
-      
-            steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 
-            }
-        }
-       stage('Deploy') {
-
-            steps {
-                sh 'echo publish'
-                sh 'kubeclt apply -f ingress.yaml'
-            }
-        }
     }
 }
 
